@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useTransform, animate, useAnimate, stagger } from "framer-motion";
-import { Shield, Brain, TrendingUp, Star, ArrowRight, CheckCircle, Zap, Users, Target, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Github, X, Menu } from "lucide-react";
+import { Shield, Brain, TrendingUp, Star, ArrowRight, CheckCircle, Zap, Users, Target, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Github, X, Menu, Link } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -172,9 +172,9 @@ function Navbar() {
 
   const navItems = [
     { name: "Features", href: "#features" },
-    { name: "Clients", href: "#clients" },
     { name: "Pricing", href: "#pricing" },
     { name: "Contact", href: "#contact" },
+    { name: "Case Studies", href: "/case-studies" },
   ];
 
   return (
@@ -185,6 +185,7 @@ function Navbar() {
           <Shield className="h-7 w-7 text-blue-400" />
           <span className="text-xl font-bold text-foreground">ReputationOne</span>
         </a>
+        
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
