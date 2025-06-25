@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog";
+import type { Variants } from "framer-motion";
 
 // Utils function
 function cn(...classes: (string | undefined | null | false)[]): string {
@@ -271,6 +272,7 @@ function ReputationHero() {
       },
     },
   };
+  
   
   
 
