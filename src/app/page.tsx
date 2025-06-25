@@ -259,18 +259,19 @@ function Navbar() {
 
 // Hero Section
 function ReputationHero() {
-  const fadeUpVariants = {
+  const fadeUpVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
+    visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 1,
-        delay: 0.5 + i * 0.2,
-        ease: "easeInOut", // ✅ FIXED
+        delay: 0.5,
+        ease: "easeInOut",
       },
-    }),
+    },
   };
+  
   
 
   return (
