@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog";
+import type { TargetAndTransition } from "framer-motion";
 
 // Utils function
 function cn(...classes: (string | undefined | null | false)[]): string {
@@ -259,17 +260,18 @@ function Navbar() {
 // Hero Section
 function ReputationHero() {
   const fadeUpVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
+    hidden: { opacity: 0, y: 40 },
+    visible: (i: number): TargetAndTransition => ({
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1,
-        delay: 0.5 + i * 0.2,
-        ease: [0.25, 0.4, 0.25, 1],
+        duration: 0.6,
+        delay: i * 0.1,
+        ease: "easeInOut", // ✅ Replace cubic bezier array with a string
       },
     }),
   };
+  
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background pt-24 md:pt-0">
