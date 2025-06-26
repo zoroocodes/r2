@@ -361,7 +361,7 @@ function ReputationHero() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-foreground/70 text-sm">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
-                <span>14-Day Free Trial</span>
+                <span>7 Day Free Trial</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
