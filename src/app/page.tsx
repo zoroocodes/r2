@@ -1,13 +1,12 @@
 "use client";
 
 import { motion, useMotionValue, useTransform, animate, useAnimate, stagger } from "framer-motion";
-import { Shield, Brain, TrendingUp, Star, ArrowRight, CheckCircle, Zap, Users, Target, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Github, X, Menu, Link } from "lucide-react";
+import { Shield, Brain, TrendingUp, Star, ArrowRight, CheckCircle, Zap, Users, Target, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Github, X, Menu, DollarSign, Lightbulb, Rocket, Crown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog";
-import type { Variants } from "framer-motion";
 
 // Utils function
 function cn(...classes: (string | undefined | null | false)[]): string {
@@ -150,7 +149,7 @@ function NYCSkyline() {
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden">
       <div 
-        className="absolute inset-0 w-full h-full opacity-30"
+        className="absolute inset-0 w-full h-full opacity-60"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
           backgroundSize: 'cover',
@@ -159,9 +158,9 @@ function NYCSkyline() {
         }}
       />
       {/* Dark gradient overlay to blend with the black background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60" />
-      {/* Blue tint overlay for night effect */}
-      <div className="absolute inset-0 bg-blue-900/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/50" />
+      {/* Gold tint overlay for premium effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/10 via-transparent to-yellow-800/15" />
     </div>
   );
 }
@@ -171,8 +170,9 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-   
+    { name: "Clients", href: "#clients" },
     { name: "Case Studies", href: "/case-studies" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -181,9 +181,8 @@ function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2">
           <Shield className="h-7 w-7 text-blue-400" />
-          <span className="text-xl font-bold text-foreground">ReputationOne</span>
+          <span className="text-xl font-bold text-foreground">ReputationOneAI</span>
         </a>
-        
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
@@ -224,7 +223,7 @@ function Navbar() {
           <DialogHeader className="flex flex-row items-center justify-between px-4 py-6 border-b border-border">
             <a href="#" className="flex items-center gap-2">
               <Shield className="h-7 w-7 text-blue-400" />
-              <span className="text-xl font-bold text-foreground">ReputationOne</span>
+              <span className="text-xl font-bold text-foreground">ReputationOneAI</span>
             </a>
             <DialogClose asChild>
               <Button variant="ghost" size="icon" className="text-foreground">
@@ -259,21 +258,18 @@ function Navbar() {
 
 // Hero Section
 function ReputationHero() {
-  const fadeUpVariants: Variants = {
+  const fadeUpVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: {
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
         duration: 1,
-        delay: 0.5,
-        ease: "easeInOut",
+        delay: 0.5 + i * 0.2,
+        ease: [0.25, 0.4, 0.25, 1],
       },
-    },
+    }),
   };
-  
-  
-  
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background pt-24 md:pt-0">
@@ -361,7 +357,7 @@ function ReputationHero() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-foreground/70 text-sm">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
-                <span>7 Day Free Trial</span>
+                <span>14-Day Free Trial</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
@@ -578,7 +574,7 @@ function PrestigiousClients() {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            When reputation matters most, the world's most influential people choose ReputationOne.
+            When reputation matters most, the world's most influential people choose ReputationOneAI.
           </p>
           <div className="text-sm text-muted-foreground/40 italic">
             *Client names confidential for privacy protection
@@ -630,6 +626,294 @@ function PrestigiousClients() {
   );
 }
 
+// Client Success Case Study Section
+function ClientSuccessCaseStudy() {
+  const caseStudies = [
+    {
+      title: "Fortune 500 Executive's Crisis Management",
+      description: "Successfully mitigated a major PR crisis, removing 15+ negative articles from the first page of search results within 48 hours.",
+      icon: Rocket,
+      stats: [
+        { label: "Negative Links Removed", value: "95%" },
+        { label: "Sentiment Score Increase", value: "+30%" },
+      ],
+      color: "blue"
+    },
+    {
+      title: "Tech Founder's Personal Brand Rebuild",
+      description: "Elevated online presence after a public controversy, establishing new positive narratives and securing top-tier media placements.",
+      icon: Lightbulb,
+      stats: [
+        { label: "Positive Mentions", value: "200+" },
+        { label: "Search Rank Improvement", value: "Top 3" },
+      ],
+      color: "purple"
+    },
+    {
+      title: "Celebrity's Digital Footprint Optimization",
+      description: "Proactively managed online image, ensuring consistent positive portrayal across all digital platforms and social media.",
+      icon: Crown,
+      stats: [
+        { label: "Online Visibility", value: "+50%" },
+        { label: "Fan Engagement", value: "+25%" },
+      ],
+      color: "yellow"
+    },
+  ];
+
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case "blue":
+        return {
+          badge: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+          icon: "text-blue-400",
+          gradient: "from-blue-400 to-cyan-400",
+          statText: "text-blue-400"
+        };
+      case "purple":
+        return {
+          badge: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+          icon: "text-purple-400",
+          gradient: "from-purple-400 to-pink-400",
+          statText: "text-purple-400"
+        };
+      case "yellow":
+        return {
+          badge: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+          icon: "text-yellow-400",
+          gradient: "from-yellow-400 to-orange-400",
+          statText: "text-yellow-400"
+        };
+      default:
+        return {
+          badge: "bg-gray-500/10 text-gray-400 border-gray-500/20",
+          icon: "text-gray-400",
+          gradient: "from-gray-400 to-gray-600",
+          statText: "text-gray-400"
+        };
+    }
+  };
+
+  return (
+    <div id="case-studies" className="py-24 bg-gradient-to-b from-gray-900 to-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <Badge className="mb-4 bg-green-500/10 text-green-400 border-green-500/20">
+            Client Success Stories
+          </Badge>
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            Real Results, Real
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-400">
+              {" "}Impact
+            </span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            See how ReputationOneAI has helped our clients achieve unparalleled online reputation success.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {caseStudies.map((study, index) => {
+            const colors = getColorClasses(study.color);
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="bg-card border-border hover:bg-card/80 transition-all duration-300 h-full">
+                  <CardHeader>
+                    <study.icon className={cn("h-12 w-12 mb-4", colors.icon)} />
+                    <CardTitle className="text-foreground text-xl">{study.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-muted-foreground text-base leading-relaxed mb-6">
+                      {study.description}
+                    </CardDescription>
+                    <div className="grid grid-cols-2 gap-4 mt-4">
+                      {study.stats.map((stat, statIndex) => (
+                        <div key={statIndex} className="text-center">
+                          <div className={cn("text-3xl font-bold mb-1", colors.statText)}>
+                            {stat.value}
+                          </div>
+                          <div className="text-sm text-muted-foreground">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+
+                <div className="mt-16 text-center">
+          <a href="/case-studies">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-green-500 to-teal-600 text-white hover:from-green-600 hover:to-teal-700 px-8 py-6 text-lg font-semibold rounded-xl shadow-lg"
+            >
+              View All Case Studies
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+// Negative Link Removal Section
+function NegativeLinkRemoval() {
+  const removalStrategies = [
+    {
+      icon: Shield,
+      title: "Search Result Suppression",
+      description: "Push down negative content by promoting positive results to the first page of Google.",
+      process: "Strategic SEO & Content Creation"
+    },
+    {
+      icon: Target,
+      title: "Direct Content Removal",
+      description: "Work directly with websites to remove defamatory, outdated, or false information.",
+      process: "Legal & Negotiation Tactics"
+    },
+    {
+      icon: TrendingUp,
+      title: "Positive Content Amplification",
+      description: "Create and promote high-quality content that showcases your best achievements.",
+      process: "Content Marketing & PR"
+    },
+    {
+      icon: Brain,
+      title: "AI-Powered Monitoring",
+      description: "Continuously scan the web for new negative mentions and act immediately.",
+      process: "24/7 Automated Detection"
+    }
+  ];
+
+  const beforeAfterStats = [
+    { label: "Negative Results Removed", value: "95%" },
+    { label: "Positive Content Ranking", value: "#1-3" },
+    { label: "Average Cleanup Time", value: "30 days" },
+    { label: "Client Satisfaction", value: "99.8%" }
+  ];
+
+  return (
+    <div id="removal" className="py-24 bg-gradient-to-b from-gray-900 to-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <Badge className="mb-4 bg-red-500/10 text-red-400 border-red-500/20">
+            Negative Link Removal
+          </Badge>
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            Clean Up Your
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
+              {" "}Search Results
+            </span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Remove unwanted negative links and suppress damaging content to make you and your business look exceptional online.
+          </p>
+        </div>
+
+        {/* Before/After Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {beforeAfterStats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="text-4xl md:text-5xl font-bold text-red-400 mb-2">
+                {stat.value}
+              </div>
+              <div className="text-sm text-muted-foreground">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Removal Strategies */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {removalStrategies.map((strategy, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="bg-card border-border hover:bg-card/80 transition-all duration-300 h-full">
+                <CardHeader>
+                  <div className="flex items-center gap-4 mb-4">
+                    <strategy.icon className="h-12 w-12 text-red-400" />
+                    <div>
+                      <CardTitle className="text-foreground text-xl">{strategy.title}</CardTitle>
+                      <Badge variant="outline" className="text-xs text-muted-foreground border-border mt-1">
+                        {strategy.process}
+                      </Badge>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-muted-foreground text-base leading-relaxed">
+                    {strategy.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Process Timeline */}
+        <div className="bg-card border border-border rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
+            Our Proven Cleanup Process
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { step: "1", title: "Audit & Analysis", desc: "Comprehensive scan of your online presence" },
+              { step: "2", title: "Strategy Development", desc: "Custom removal and suppression plan" },
+              { step: "3", title: "Execute & Monitor", desc: "Implement tactics and track progress" },
+              { step: "4", title: "Maintain & Protect", desc: "Ongoing monitoring and protection" }
+            ].map((phase, index) => (
+              <div key={index} className="text-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
+                  {phase.step}
+                </div>
+                <h4 className="text-foreground font-semibold mb-2">{phase.title}</h4>
+                <p className="text-muted-foreground text-sm">{phase.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-16">
+          <Button 
+            size="lg" 
+            className="bg-gradient-to-r from-red-500 to-orange-600 text-white hover:from-red-600 hover:to-orange-700 px-8 py-6 text-lg font-semibold rounded-xl shadow-lg"
+          >
+            Start Cleanup Process
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+          <p className="text-muted-foreground text-sm mt-4">
+            Free consultation • No upfront costs • Results guaranteed
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // CTA Section
 function CTASection() {
   return (
@@ -646,7 +930,7 @@ function CTASection() {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Join thousands of founders, agencies, and influencers who trust ReputationOne 
+            Join thousands of founders, agencies, and influencers who trust ReputationOneAI 
             to protect and enhance their digital presence.
           </p>
           
@@ -690,9 +974,9 @@ function CTASection() {
 // Footer Component
 function Footer() {
   const footerLinks = {
-    Product: ["Features", "Pricing", "API", "Integrations", "Security"],
-    Company: ["About", "Careers", "Press", "Partners", "Contact"],
-    Resources: ["Blog", "Documentation", "Help Center", "Community", "Status"],
+    Product: ["Features", "API", "Integrations", "Security"],
+    Company: ["About", "Careers", "Press", "Partners"],
+    Services: ["Link Removal", "SEO Suppression", "Crisis Management", "Content Creation"],
     Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy", "GDPR", "Compliance"]
   };
 
@@ -704,7 +988,7 @@ function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <Shield className="h-8 w-8 text-blue-400" />
-              <span className="text-2xl font-bold text-foreground">ReputationOne</span>
+              <span className="text-2xl font-bold text-foreground">ReputationOneAI</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-sm">
               AI-powered reputation management for the world's most influential people and brands.
@@ -762,7 +1046,7 @@ function Footer() {
           {/* Bottom Bar */}
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border">
             <div className="text-muted-foreground text-sm mb-4 md:mb-0">
-              © 2024 ReputationOne. All rights reserved.
+              © 2024 ReputationOneAI. All rights reserved.
             </div>
             <div className="flex gap-6 text-sm text-muted-foreground">
               <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
@@ -806,7 +1090,7 @@ function StickyFooterCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
             <h3 className="text-foreground font-semibold text-lg">Ready to Transform Your Reputation?</h3>
-            <p className="text-muted-foreground text-sm">Join elite clients who trust ReputationOne</p>
+            <p className="text-muted-foreground text-sm">Join elite clients who trust ReputationOneAI</p>
           </div>
           <div className="flex gap-3">
             <Button 
@@ -831,10 +1115,6 @@ function StickyFooterCTA() {
 
 // Main Landing Page Component
 function ReputationOneLanding() {
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
-  
   return (
     <div className="min-h-screen w-screen bg-background">
       <Navbar />
@@ -842,6 +1122,8 @@ function ReputationOneLanding() {
       <FeaturesSection />
       <SocialProof />
       <PrestigiousClients />
+      <ClientSuccessCaseStudy />
+      <NegativeLinkRemoval />
       <CTASection />
       <Footer />
       <StickyFooterCTA />
